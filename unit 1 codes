@@ -1,6 +1,6 @@
 import re
 
-text = "My email is amal123@gmail.com and phone is 9876543210"
+text = "My email is sarthak123@gmail.com and phone is 98xxxxxxx"
 
 # Extract email
 email = re.findall(r'\S+@\S+', text)
