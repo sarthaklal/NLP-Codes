@@ -1,0 +1,96 @@
+```python
+import re
+
+text = "My email is sarthak23@gmail.com and phone is 9xxxxxxxxx"
+
+# Extract email
+email = re.findall(r'\S+@\S+', text)
+
+# Extract 10-digit phone numbers
+phone = re.findall(r'\b\d{10}\b', text)
+
+print("Email:", email)
+print("Phone:", phone)
+
+import nltk
+nltk.download('punkt')
+from nltk.tokenize import word_tokenize, sent_tokenize
+
+text = "Natural Language Processing is interesting. It is powerful."
+
+# Sentence Tokenization
+sentences = sent_tokenize(text)
+
+# Word Tokenization
+words = word_tokenize(text)
+
+print("Sentences:", sentences)
+print("Words:", words)
+
+from nltk.stem import PorterStemmer
+
+stemmer = PorterStemmer()
+words = ["running", "runs", "ran", "easily"]
+
+stems = [stemmer.stem(word) for word in words]
+print("Stems:", stems)
+
+nltk.download('wordnet')
+from nltk.stem import WordNetLemmatizer
+
+lemmatizer = WordNetLemmatizer()
+
+words = ["running", "better", "cars"]
+
+lemmas = [lemmatizer.lemmatize(word) for word in words]
+print("Lemmas:", lemmas)
+
+from collections import Counter
+import math
+
+document = "NLP is fun and NLP is useful"
+words = document.split()
+
+tf = Counter(words)
+total_words = len(words)
+
+for word in tf:
+    tf[word] = tf[word] / total_words
+
+print("Term Frequency:", tf)
+documents = [
+    "NLP is fun",
+    "NLP is useful",
+    "Machine learning is powerful"
+]
+
+N = len(documents)
+
+def compute_idf(word):
+    count = sum(1 for doc in documents if word in doc)
+    return math.log(N / (1 + count))
+
+print("IDF of NLP:", compute_idf("NLP"))
+
+nltk.download('averaged_perceptron_tagger')
+
+text = "NLP is very powerful"
+words = word_tokenize(text)
+
+pos_tags = nltk.pos_tag(words)
+print("POS Tags:", pos_tags)
+
+from nltk.util import ngrams
+
+sentence = "Natural language processing is fun"
+tokens = sentence.split()
+
+# Bigrams
+bigrams = list(ngrams(tokens, 2))
+
+# Trigrams
+trigrams = list(ngrams(tokens, 3))
+
+print("Bigrams:", bigrams)
+print("Trigrams:", trigrams)
+```
